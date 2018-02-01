@@ -7,20 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  username: string;
-  password: string;
-  email: string;
+
   constructor(private mediaService: MediaService) { }
 
   ngOnInit() {
   }
 
-  register() {
-    this.mediaService.register(this.username, this.password, this.email).subscribe(
-      (data: any) => {
-        console.log(data);
-      }
-    );
-  }
+  // register() {
+  //   this.mediaService.register(this.username, this.password, this.email).subscribe(
+  //     (data: any) => {
+  //       console.log(data);
+  //     }
+  //   );
+  // }
 
 }

@@ -11,20 +11,18 @@ export class LoginComponent implements OnInit {
 
   username: string;
   password: string;
+
   constructor(private mediaService: MediaService,
     private route: Router) { }
 
   ngOnInit() {
-  }
 
-  login() {
-    this.mediaService.login(this.username, this.password).subscribe(
-      (data: any) => {
-        console.log(data);
-        const token: string = data.token;
-        localStorage.setItem('token', token);
-      }
-    );
-    this.route.navigate(['front']);
+    if (localStorage.getItem('token')) {
+      this.mediaService.hasValidToken().subscribe(response => {
+        this.route.navigate(['front']);
+      }, err => {
+        console.log('error validate login token');
+      });
+    }
   }
 }
